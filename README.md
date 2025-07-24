@@ -46,6 +46,13 @@ The project is fully containerized using Docker and designed for ease of deploym
 
 ---
 
+## 🧭 System Architecture
+
+<img src="https://github.com/monsieurupanshu/truvalue-ml-api/blob/main/HDLC.png?raw=true" width="700"/>
+
+
+---
+
 ## 🧠 How It Works
 This section outlines how each core task in the project is implemented:
 
