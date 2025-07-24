@@ -1,4 +1,4 @@
-# 🏠 TruValue ML API
+# 🏠 TruValue ML
 
 A machine learning-powered property price prediction API, built using FastAPI and Docker. This project is developed as part of the TruValue ML Coding Challenge and demonstrates a fully containerized, production-ready pipeline for model inference and retraining.
 
@@ -25,6 +25,21 @@ The project is fully containerized using Docker and designed for ease of deploym
 ├── truvalue_model.pkl       # Trained RandomForest model for price prediction
 ├── sample_request.json      # Sample input JSON payload for testing /predict
 ├── .gitignore               # Ignores __pycache__, .pkl, .env, temp files etc. </pre>
+
+---
+
+## 🔀 FLOW CONNECTIONS
+
+`Client` → `FastAPI App`
+
+`FastAPI App` → `Preprocessor` → `ML Model` → `Response` (back to Client)
+
+`FastAPI App` → `Dataset (CSV)` (for retrain)
+
+`Dataset` → `Preprocessor + Model` → `.pkl files`
+
+
+All components grouped inside the Docker Cloud shape box
 
 ---
 
