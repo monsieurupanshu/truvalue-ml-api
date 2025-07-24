@@ -63,3 +63,58 @@ docker compose up
 ```
 The API will be available at:
 [`localhost:8000/docs`](http://localhost:8000/docs)
+
+## 📮 API Endpoints
+🔹 POST /predict
+### Sample JSON Payload
+```bash
+{
+  "Area_sqft": 1800,
+  "Bedrooms": 3,
+  "Bathrooms": 3,
+  "Location": "Downtown Dubai",
+  "Age_years": 4
+}
+```
+
+### Response
+```bash
+{
+  "predicted_price": 2312800
+}
+```
+
+---
+
+🔹 POST /retrain
+
+Triggers retraining of model using property_data.csv.
+
+### Response
+```bash
+{
+  "status": "✅ Model retrained and updated in memory."
+}
+```
+
+---
+
+### 🧪 Example: Predict Property Price
+Use the following command to test the /predict endpoint:
+
+```bash
+curl -X POST "http://localhost:8000/predict" \
+     -H "Content-Type: application/json" \
+     -d @sample_request.json
+```
+
+---
+
+### 🔁 Example: Retrain Model with New Data
+Use the following command to retrain the model using property_data.csv:
+
+```bash
+curl -X POST "http://localhost:8000/retrain" \
+     -H "Content-Type: text/csv" \
+     --data-binary @property_data.csv
+```
