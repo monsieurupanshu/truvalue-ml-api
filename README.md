@@ -40,3 +40,26 @@ This section outlines how each core task in the project is implemented:
 | **Retraining endpoint `/retrain`** | Reloads dataset, retrains model, updates preprocessor + model in memory            |
 | **Containerized deployment**       | `Dockerfile` + `docker-compose.yml` ensure consistent environment + easy execution |
 | **Documentation**                  | Swagger UI is auto-hosted at [`localhost:8000/docs`](http://localhost:8000/docs)   |
+
+## 🚀 Getting Started (Local Docker Setup)
+Make sure Docker is installed and running.
+
+### Clone this repo
+```bash
+git clone https://github.com/monsieurupanshu/truvalue-ml-api.git
+```
+```bash
+cd truvalue-ml-api
+```
+
+### Build the container
+```bash
+docker compose build
+```
+
+### Run the API
+```bash
+docker compose up
+```
+The API will be available at:
+[`localhost:8000/docs`](http://localhost:8000/docs)
