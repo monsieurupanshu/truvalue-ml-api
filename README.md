@@ -50,7 +50,6 @@ The project is fully containerized using Docker and designed for ease of deploym
 
 <img src="https://github.com/monsieurupanshu/truvalue-ml-api/blob/main/HDLC.png?raw=true" width="700"/>
 
-
 ---
 
 ## 🧠 How It Works
@@ -108,7 +107,6 @@ The API will be available at:
   "predicted_price": 2990400
 }
 ```
-
 ---
 
 🔹 POST /retrain
@@ -133,6 +131,13 @@ Triggers retraining of model using property_data.csv.
 <img src="https://github.com/monsieurupanshu/truvalue-ml-api/blob/main/Retrain.png?raw=true" width="700"/>
 
 ---
+
+## ✅ Sample API Execution via curl
+
+<img src="https://github.com/monsieurupanshu/truvalue-ml-api/blob/main/Curl.png?raw=true" width="700"/>
+
+---
+
 
 ### 🧪 Example: Predict Property Price
 Use the following command to test the /predict endpoint:
