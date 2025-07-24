@@ -105,7 +105,7 @@ The API will be available at:
 ### Response
 ```bash
 {
-  "predicted_price": 2312800
+  "predicted_price": 2990400
 }
 ```
 
