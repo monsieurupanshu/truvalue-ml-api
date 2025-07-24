@@ -124,6 +124,16 @@ Triggers retraining of model using property_data.csv.
 
 ---
 
+## 📷 API Endpoints Demo
+
+### `/predict` Endpoint Response
+<img src="https://github.com/monsieurupanshu/truvalue-ml-api/blob/main/Predict.png?raw=true" width="700"/>
+
+### `/retrain` Endpoint Response
+<img src="https://github.com/monsieurupanshu/truvalue-ml-api/blob/main/Retrain.png?raw=true" width="700"/>
+
+---
+
 ### 🧪 Example: Predict Property Price
 Use the following command to test the /predict endpoint:
 
