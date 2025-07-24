@@ -30,16 +30,19 @@ The project is fully containerized using Docker and designed for ease of deploym
 
 ## 🔀 FLOW CONNECTIONS
 
-`Client` → `FastAPI App`
+1. `Client` → `FastAPI App`
 
-`FastAPI App` → `Preprocessor` → `ML Model` → `Response` (back to Client)
+2. `FastAPI App` → `Preprocessor` → `ML Model` → `Response` (back to Client)
 
-`FastAPI App` → `Dataset (CSV)` (for retrain)
+3. `FastAPI App` → `Dataset (CSV)` (for retrain)
 
-`Dataset` → `Preprocessor + Model` → `.pkl files`
+4. `Dataset` → `Preprocessor + Model` → `.pkl files`
 
+5. All components grouped inside the Docker Cloud shape box
 
-All components grouped inside the Docker Cloud shape box
+`/predict`: Sends JSON → preprocess → model → price
+
+`/retrain`: Reloads dataset → retrains model → updates in memory
 
 ---
 
