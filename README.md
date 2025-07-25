@@ -159,3 +159,33 @@ curl -X POST "http://localhost:8000/retrain" \
   -H "Content-Type: multipart/form-data" \
   -F "file=@property_data.csv;type=text/csv"
 ```
+---
+
+## 🔧 Design Decisions
+
+1. **`FastAPI` for API Development:**
+Chosen for its speed, modern async support, built-in validation via Pydantic, and interactive Swagger UI at /docs.
+
+2. **`Random Forest` Model for Price Prediction:**
+Selected for its robustness and ability to handle non-linear feature interactions without extensive preprocessing. Performs well on tabular data and is interpretable with feature importances.
+
+3. **In-Memory Model Retraining:**
+The model is retrained and updated in memory without restarting the API. This ensures zero-downtime deployment and faster response during development.
+
+4. **`Model + Preprocessor` Saved as .pkl:**
+Used pickle to persist both the OneHotEncoder + Scaler pipeline and the trained ML model, keeping preprocessing and inference in sync.
+
+5. **CSV Upload for `/retrain`:**
+Accepted CSV files using multipart/form-data to simplify input and mirror real-world bulk data ingestion.
+
+6. **Input Validation with `Pydantic`:**
+Ensures that the JSON payload for /predict contains all required fields with correct data types, improving reliability and debugging.
+
+7. **`curl` Commands for Testing:**
+Added reproducible curl commands in the README for verifying both endpoints via terminal without relying on third-party tools.
+
+8. **Dockerized Deployment:**
+Containerized with `Docker` and orchestrated using docker-compose for easy setup and consistent local/production environments.
+
+9. **Modular File Structure:**
+Separated `model training` (train_model.py), `API logic` (main.py), `data` (property_data.csv), and requirements for clarity and reusability.
