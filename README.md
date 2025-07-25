@@ -120,6 +120,13 @@ Triggers retraining of model using property_data.csv.
 }
 ```
 
+**🔁 How to regenerate `.pkl` files**
+
+Simply run the following command to train the model and export both artifacts:
+```bash
+python train_model.py
+```
+
 ---
 
 ## 📷 API Endpoints Demo
