@@ -127,6 +127,11 @@ Simply run the following command to train the model and export both artifacts:
 python train_model.py
 ```
 
+**This will output:**
+
+- `truvalue_model.pkl`
+- `preprocessor.pkl`
+
 ---
 
 ## 📷 API Endpoints Demo
