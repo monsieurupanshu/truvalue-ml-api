@@ -155,6 +155,7 @@ Use the following command to retrain the model using property_data.csv:
 
 ```bash
 curl -X POST "http://localhost:8000/retrain" \
-     -H "Content-Type: text/csv" \
-     --data-binary @property_data.csv
+  -H "accept: application/json" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@property_data.csv;type=text/csv"
 ```
