@@ -89,7 +89,7 @@ The API will be available at:
 [`localhost:8000/docs`](http://localhost:8000/docs)
 
 ## 📮 API Endpoints
-🔹 POST /predict
+🔹 POST `/predict`
 ### Sample JSON Payload
 ```bash
 {
@@ -109,7 +109,7 @@ The API will be available at:
 ```
 ---
 
-🔹 POST /retrain
+🔹 POST `/retrain`
 
 Triggers retraining of model using property_data.csv.
 
@@ -132,7 +132,7 @@ Triggers retraining of model using property_data.csv.
 
 ---
 
-## ✅ Sample API Execution via curl
+## ✅ Sample API Execution via `curl`
 
 <img src="https://github.com/monsieurupanshu/truvalue-ml-api/blob/main/Curl.png?raw=true" width="700"/>
 
@@ -166,8 +166,13 @@ curl -X POST "http://localhost:8000/retrain" \
 1. **`FastAPI` for API Development:**
 Chosen for its speed, modern async support, built-in validation via Pydantic, and interactive Swagger UI at /docs.
 
-2. **`Random Forest` Model for Price Prediction:**
-Selected for its robustness and ability to handle non-linear feature interactions without extensive preprocessing. Performs well on tabular data and is interpretable with feature importances.
+2. **`Random Forest Model` for Price Prediction:**
+- ✅ Robustness: Performs well even with minimal hyperparameter tuning.
+- 🌳 Handles Non-Linear Interactions: Captures complex relationships without the need for polynomial features.
+- 📊 Tabular Data Friendly: Ideal for structured datasets like the one provided.
+- 🧹 Minimal Preprocessing: Works well with encoded categorical features and scaled numerical data.
+- 🔍 Interpretability: Feature importances can be extracted for insights.
+- ⚖️ Strong Performance: Especially suitable for small-to-medium-sized datasets, as in this case.
 
 3. **In-Memory Model Retraining:**
 The model is retrained and updated in memory without restarting the API. This ensures zero-downtime deployment and faster response during development.
@@ -189,3 +194,31 @@ Containerized with `Docker` and orchestrated using docker-compose for easy setup
 
 9. **Modular File Structure:**
 Separated `model training` (train_model.py), `API logic` (main.py), `data` (property_data.csv), and requirements for clarity and reusability.
+---
+
+## Extras
+
+### 🧠 Other Possible Modeling Approaches
+
+In real estate price prediction, several advanced ML algorithms can be used depending on dataset size, feature complexity, and desired performance.
+
+🔹 XGBoost
+- Known for its regularization and boosting power, ideal for tabular data.
+- Performs well on large datasets with complex interactions.
+- Can replace or complement Random Forest.
+
+🔹 LightGBM
+- A faster, memory-efficient alternative to XGBoost.
+- Great for large-scale predictions with categorical features.
+
+🔹 Stacked/Ensemble Models
+- Combine models like Random Forest + XGBoost to reduce bias and variance.
+- Averaging or meta-learners (e.g., Linear Regression on top) can yield better performance.
+
+🔹 Deep Learning Models (e.g., DNNs): Could be explored if the dataset is large and contains more complex patterns, although overkill for this current small dataset.
+
+### 🏠 What Does Zillow Use?
+Zillow's Zestimate® leverages:
+- Gradient Boosting Machines (GBMs) and deep learning models.
+- Combined with location-based features, public records, user data, and historical trends.
+- Extensive feature engineering and ensemble modeling.
