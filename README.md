@@ -234,3 +234,45 @@ Zillow's Zestimate® leverages:
 - Gradient Boosting Machines (GBMs) and deep learning models.
 - Combined with location-based features, public records, user data, and historical trends.
 - Extensive feature engineering and ensemble modeling.
+---
+
+## 🚀Scaling and Monitoring Strategy
+
+### 🔁 Scaling Strategy
+To ensure the ML system remains performant and reliable under real-world usage in a PropTech environment:
+
+- `Containerization & Orchestration`:
+The API is containerized using **Docker**, making it easy to deploy and scale horizontally using **Kubernetes** or cloud-native services.
+`Example`: During a property expo in Dubai, user traffic spikes by 10x — Kubernetes auto-scales containers to serve concurrent valuation requests.
+
+- `Async Retraining & Background Tasks`:
+Expensive tasks like model retraining are offloaded using **FastAPI BackgroundTasks** or job queues like **Celery**, ensuring prediction endpoints remain non-blocking.
+`Example`: A bulk listing update from a property aggregator triggers background retraining without affecting the prediction API.
+
+- `Batch ETL & Data Processing`:
+For larger datasets (e.g., monthly transaction logs), batch ETL jobs using tools like **Apache Airflow** process data for model updates.
+`Example`: A batch job loads 50,000 new transaction records from DLD (Dubai Land Department) for price model retraining.
+
+- `Inference Caching`:
+Frequently requested predictions (e.g., valuations for the same unit) are cached via **Redis** to avoid redundant computation.
+`Example`: Repeated API queries for "2BHK, Marina View Tower, Dubai Marina" serve results instantly from cache.
+
+- `Cloud Scaling`:
+Supports deployment to **AWS SageMaker**, **GCP AI Platform**, or  **Azure ML** for managed auto-scaling of inference endpoints and large model training jobs.
+
+### 📊 Monitoring Strategy
+To maintain both infrastructure reliability and ML model performance over time:
+
+- `System Monitoring`:
+API health (latency, errors, throughput) is monitored using **Prometheus + Grafana** or **AWS CloudWatch**. `Example`: Alerts fire when `/predict` API latency exceeds 1s for 5 consecutive minutes.
+
+- `ML Model Monitoring`:
+Track input **data drift**, **prediction drift**, and **model performance degradation** using tools like EvidentlyAI or custom drift detection scripts. `Example`: After a regulatory policy change, prediction distribution shifts by 15% — triggering a retrain signal.
+
+- `Logging & Alerting`:
+All API and model activity is logged using **ELK Stack** or **Cloud-native logging tools**. Alerts are configured to detect anomalies or model failures. `Example`: Retrain endpoint errors >10/min send Slack alerts to the DevOps team.
+
+- `Feedback Loop & Retraining`:
+Periodically evaluate predictions against verified transaction prices or agent feedback to trigger model retraining. `Example`: If model accuracy on newly sold listings drops below 90%, retraining is auto-scheduled.
+
+
